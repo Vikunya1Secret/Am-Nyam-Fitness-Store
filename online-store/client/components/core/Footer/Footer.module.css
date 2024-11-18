@@ -1,0 +1,96 @@
+/*.footer {
+  background-color: #1a1a1a;
+ 
+  padding: 15px;
+
+  display: none;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.links li:not(:last-child) {
+  margin-right: 30px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .footer {
+    display: block;
+  }
+}
+*/
+
+.footer{
+  background: #0E0909;
+  height: 235px;
+}
+
+.line{
+  width: 1200px;
+  height: 0.99px;
+  border: 1px solid #858FA4;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.container{
+  width: 1200 px;
+  display: block;
+}
+
+.ulfooter{
+  display: flex;
+  color: #0e090900;
+  justify-content: center; 
+}
+.ulfooter li{
+  display: flex;
+  padding: 20px 30px;
+}
+
+.downfotter{
+  display: flex;
+  max-width: 1200 px;
+  justify-content: center;
+}
+
+
+
+.fitZone{
+  
+}
+.fitZone p {
+  color: #A4A4A4;
+}
+
+.fitZone img {
+  max-width: 216 px;
+  max-height:51px;
+}
+
+
+
+.footer_logo_and_nav{
+  
+}
+
+
+.social_network ul{
+  display: flex;
+  color: #A4A4A4;
+}
+.social_network h2{
+  padding-right: 15px;
+  color: #A4A4A4;
+}
+.lasth2{
+  padding-right: 0;
+}

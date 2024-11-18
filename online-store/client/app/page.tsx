@@ -4,9 +4,10 @@ import { Container } from "@/components/shared/container";
 import { Header } from "@/components/shared/header";
 import { SortPopup } from "@/components/shared/sort-popup";
 import { Menu } from "lucide-react";
-import { Fotter } from "@/components/shared/footer";
+
 import Catalog from "@/components/shared/catalog";
 import { PopularProduct } from "@/components/shared/popularProduct";
+import { Fotter } from "@/components/core/Footer";
 
 export default function Home() {
   return (

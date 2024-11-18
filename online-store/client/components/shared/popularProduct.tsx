@@ -89,33 +89,6 @@ export const PopularProduct: React.FC<Props> = ({ className }) => {
                   height="300px"
                 />
               </div>
-
-              <div>
-                <img
-                  src="/product2.png"
-                  alt="product2"
-                  width="290px"
-                  height="300px"
-                />
-              </div>
-
-              <div>
-                <img
-                  src="/product3.png"
-                  alt="product3"
-                  width="290px"
-                  height="300px"
-                />
-              </div>
-
-              <div>
-                <img
-                  src="/product4.png"
-                  alt="product4"
-                  width="290px"
-                  height="300px"
-                />
-              </div>
             </CarouselItem>
           </CarouselContent>
 

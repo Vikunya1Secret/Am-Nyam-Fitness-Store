@@ -13,7 +13,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ className }) => {
   return (
     <header className={cn("", className)}>
-      <Container className=" max-w-[1200px] flex items-center justify-between py-8">
+      <Container className=" max-w-[1200px] flex items-center justify-between py-8 mx-auto my-auto">
         {/* Левая часть */}
         <form action="http://localhost:3000/">
           <Button variant="default">

@@ -1,10 +1,8 @@
-import { cn } from "@/lib/utils";
+/*import { cn } from "@/lib/utils";
 import React from "react";
 import { Container } from "./container";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { Heart, ShoppingBag, ShoppingCart, UserRound } from "lucide-react";
-import { SearchInput } from "./search-input";
 
 interface Props {
   className?: string;
@@ -14,7 +12,7 @@ export const Fotter: React.FC<Props> = ({ className }) => {
   return (
     <footer className={cn("", (className = "bg-[#0E0909]"))}>
       <Container className=" max-w-[1198px] max-h-[235px] flex items-center justify-between py-8 ">
-        {/* Левая часть */}
+        
 
         <ul>
           <li>
@@ -61,9 +59,7 @@ export const Fotter: React.FC<Props> = ({ className }) => {
           <h2>© FitZone. 2024 Все права защищены</h2>
         </div>
 
-        {/* Середина */}
-
-        {/* Правая часть */}
+        
 
         <div>
           <div className="flex items-center ">
@@ -104,4 +100,4 @@ export const Fotter: React.FC<Props> = ({ className }) => {
       </Container>
     </footer>
   );
-};
+};*/
