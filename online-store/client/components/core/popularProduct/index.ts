@@ -1,0 +1,1 @@
+export { PopularProduct } from "./popularProduct";

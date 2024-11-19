@@ -8,5 +8,5 @@ export { AdvertisingBanners } from "./advertisingBanners";
 
 export { Catalog } from "./catalog";
 
-export { PopularProduct } from "./popularProduct";
+
 

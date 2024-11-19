@@ -1,20 +1,26 @@
-import { AdvertisingBanners } from "@/components/shared/advertisingBanners";
-
-import { Categories } from "@/components/shared/categories";
+import styles from "./Basket.module.css";
 import { Container } from "@/components/shared/container";
 import { Header } from "@/components/shared/header";
-import { SortPopup } from "@/components/shared/sort-popup";
-import { Menu } from "lucide-react";
 import { Fotter } from "@/components/core/Footer";
 import Catalog from "@/components/shared/catalog";
+import { PopularProduct } from "@/components/core/popularProduct";
 export default function Basket() {
   return (
     <Container className="w-full ">
       <Header />
       <Catalog />
-      <div>
-        <h1>basket</h1>
+      <div className={styles.basket}>
+        <h1>В вашей корзине пусто</h1>
+        <div>
+          <img src="/basket.png" alt="basket" />
+        </div>
+        <h2>
+          Чтобы облегчить покупку войдите в личный кабинет. <br />
+          Вдруг у вас есть крутой список избранных товаров или что-то завалялось
+          в корзине. А за новинками — в каталог.
+        </h2>
       </div>
+      <PopularProduct />
       <Fotter />
     </Container>
   );

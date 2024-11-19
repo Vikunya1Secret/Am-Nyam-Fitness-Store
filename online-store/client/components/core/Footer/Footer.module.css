@@ -33,7 +33,7 @@
 }
 
 .line{
-  width: 1200px;
+ 
   height: 0.99px;
   border: 1px solid #858FA4;
   margin-left: auto;
@@ -42,7 +42,7 @@
 
 
 .container{
-  width: 1200 px;
+  max-width: 1200px;
   display: block;
 }
 
@@ -53,22 +53,35 @@
 }
 .ulfooter li{
   display: flex;
-  padding: 20px 30px;
+  padding: 30px;
+  font-family: Geologica;
+  font-size: 16px;
+  font-weight: 800;
+
+
 }
 
 .downfotter{
   display: flex;
-  max-width: 1200 px;
-  justify-content: center;
+  padding-top: 25px;
+  justify-content: space-between;
 }
 
 
 
 .fitZone{
-  
+  width: 261px;
+  height: 95px;
 }
 .fitZone p {
   color: #A4A4A4;
+  padding-top: 24px;
+  font-family: Geologica;
+  font-size: 14px;
+  font-weight: 400;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
 }
 
 .fitZone img {
@@ -79,17 +92,24 @@
 
 
 .footer_logo_and_nav{
+  display: block;
+}
+
+
+.social_network{
+  text-align: right;
+}
+.links ul{
+  display: flex;
   
 }
-
-
-.social_network ul{
-  display: flex;
+.links h2{
+  padding-left: 15px;
   color: #A4A4A4;
-}
-.social_network h2{
-  padding-right: 15px;
-  color: #A4A4A4;
+  padding-top: 15px;
+  font-family: Geologica;
+  font-size: 14px;
+  font-weight: 400;
 }
 .lasth2{
   padding-right: 0;

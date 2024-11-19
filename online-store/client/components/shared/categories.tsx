@@ -31,7 +31,7 @@ export const Categories: React.FC<Props> = ({ className }) => {
         className="flex items-center font-cruinn h-4  pl-5 pr-5 m-auto"
       >
         <button>
-          <h2>ТРЕНАЖЕРЫ</h2>
+          <h2>ПИТАНИЕ</h2>
         </button>
       </form>
       <form
@@ -39,7 +39,7 @@ export const Categories: React.FC<Props> = ({ className }) => {
         className="flex items-center font-cruinn h-4  pl-5 pr-5 m-auto"
       >
         <button>
-          <h2>ПИТАНИЕ</h2>
+          <h2>НОВИНКИ</h2>
         </button>
       </form>
       <form

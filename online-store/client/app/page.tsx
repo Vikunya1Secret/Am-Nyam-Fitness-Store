@@ -6,8 +6,9 @@ import { SortPopup } from "@/components/shared/sort-popup";
 import { Menu } from "lucide-react";
 
 import Catalog from "@/components/shared/catalog";
-import { PopularProduct } from "@/components/shared/popularProduct";
+
 import { Fotter } from "@/components/core/Footer";
+import { PopularProduct } from "@/components/core/popularProduct";
 
 export default function Home() {
   return (

@@ -12,7 +12,7 @@ export const Fotter: React.FC<Props> = () => {
     <footer className={styles.footer}>
       <Container className={styles.container}>
         <ul className={styles.ulfooter}>
-          <li>
+          <li className="">
             <button>
               <h2>О компании</h2>
             </button>
@@ -58,7 +58,7 @@ export const Fotter: React.FC<Props> = () => {
           </div>
 
           <div className={styles.footer_logo_and_nav}>
-            <div>
+            <div className={styles.social_network}>
               <a href="#">
                 <Button variant="default">
                   <img src="/vk.png" alt="logo" width="45" height="45" />
@@ -75,7 +75,7 @@ export const Fotter: React.FC<Props> = () => {
                 </Button>
               </a>
             </div>
-            <div className={styles.social_network}>
+            <div className={styles.links}>
               <ul>
                 <li>
                   <button>

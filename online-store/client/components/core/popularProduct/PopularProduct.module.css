@@ -1,0 +1,52 @@
+.PopularProduct{
+    max-width: 1340px;
+    max-height: 568px;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    padding: 73px 0;
+    
+}
+
+.PopularProduct h2{
+    max-width: 1200px;
+    max-height: 1396px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    font-family: Geologica;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+
+    
+    
+}
+.PopularProduct h1{
+    font-family: Geologica;
+    font-size: 37.5px;
+    font-weight: 600;
+    line-height: 24px;
+    padding-bottom: 25px;
+}
+
+.PopularProduct h3{
+    font-family: Geologica;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px; 
+}
+.PopularProduct button{
+    font-family: Geologica;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+
+
+}
+
+.carouselContent{
+    max-width: 1200px;
+}
