@@ -1,12 +1,20 @@
 const sequelize = require('../db')
-const {DataTypes} = require('sequelize')
+const {DataTypes, BOOLEAN, STRING} = require('sequelize')
 
 const User = sequelize.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"},
+    isActivated: {type: DataTypes.BOOLEAN, defaultValue: false},
+    activationLink: {type: DataTypes.STRING},
 })
+
+const Token = sequelize.define('token', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    userId: { type: DataTypes.INTEGER, allowNull: false },
+    refreshToken: { type: DataTypes.STRING, allowNull: false }
+});
 
 const Basket = sequelize.define('basket', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -80,6 +88,7 @@ Brand.belongsToMany(Type, {through: TypeBrand })
 
 module.exports = {
     User,
+    Token,
     Basket,
     BasketProduct,
     Product,
