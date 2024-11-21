@@ -2,6 +2,7 @@ const ApiError = require('../error/ApiError')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {User, Basket} = require('../models/models')
+const userService = require('../service/user-service')
 
 const generateJwt = (id, email, role) => {
     return jwt.sign(
@@ -10,21 +11,17 @@ const generateJwt = (id, email, role) => {
         {expiresIn: '24h'}
         )
 }
+
 class UserController {
     async registration(req, res, next){
-        const {email, password, role} = req.body
-        if(!email || !password) {
-            return next(ApiError.badRequest('Некорректный email или password'))
+        try {
+            const {email, password, role} = req.body;
+            const userData = await userService.registration(email, password, role)
+            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+            return res.json(userData)
+        } catch (e) {
+            console.log(e)
         }
-        const candidate = await User.findOne({where: {email}})
-        if (candidate) {
-            return next(ApiError.badRequest('Пользователь с таким email уже существует'))
-        }
-        const hashPassword = await bcrypt.hash(password, 5)
-        const user = await User.create({email, role, password: hashPassword})
-        const basket = await Basket.create({userId: user.id})
-        const token = generateJwt(user.id, user.email, user.role)
-        return res.json({token})
     }
 
     async login(req, res, next){
@@ -39,6 +36,44 @@ class UserController {
         }
         const token = generateJwt(user.id, user.email, user.role)
         return res.json({token})
+    }
+
+    async logout(req, res, next){
+        const {email, password} = req.body
+        const user = await User.findOne({where: {email}})
+        if (!user) {
+            return next(ApiError.internal('Пользлватель с таким именем не найден'))
+        }
+        let comparePassword = bcrypt.compareSync(password, user.password)
+        if(!comparePassword){
+            return next(ApiError.internal('Указан неверный пароль'))
+        }
+        const token = generateJwt(user.id, user.email, user.role)
+        return res.json({token})
+    }
+
+    async activate(req, res, next){
+        try{
+
+        } catch (e) {
+
+        }
+    }
+
+    async refresh(req, res, next){
+        try{
+
+        } catch (e) {
+            
+        }
+    }
+
+    async getUsers(req, res, next){
+        try{
+            res.json([1, 2, 4])
+        } catch (e) {
+            
+        }
     }
 
     async check(req, res, next){
