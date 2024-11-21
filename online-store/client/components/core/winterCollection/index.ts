@@ -1,0 +1,1 @@
+export { WinterCollection } from "./WinterCollection";

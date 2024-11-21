@@ -5,10 +5,10 @@ import { Header } from "@/components/shared/header";
 import { SortPopup } from "@/components/shared/sort-popup";
 import { Menu } from "lucide-react";
 
-import Catalog from "@/components/shared/catalog";
-
 import { Fotter } from "@/components/core/Footer";
 import { PopularProduct } from "@/components/core/popularProduct";
+import { WinterCollection } from "@/components/core/winterCollection";
+import Catalog from "@/components/core/catalog/catalog";
 
 export default function Home() {
   return (
@@ -17,6 +17,7 @@ export default function Home() {
       <Catalog />
       <AdvertisingBanners />
       <PopularProduct />
+      <WinterCollection />
       <Fotter />
     </Container>
   );
