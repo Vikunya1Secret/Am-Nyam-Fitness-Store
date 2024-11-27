@@ -19,77 +19,77 @@ export const PopularProduct: React.FC<Props> = () => {
         <h1 className="">ПОПУЛЯРНЫЕ ТОВАРЫ</h1>
         <Carousel className="">
           <CarouselContent className={styles.carouselContent}>
-            <CarouselItem className="basis-1/3">
-              <div>
+            <CarouselItem className="basis-1/4">
+              <div className={styles.item}>
                 <img
                   src="/product2.png"
                   alt="product2"
                   width="290px"
-                  height="300px"
+                  height="302px"
                 />
                 <div>
-                  <h2>9 999 ₽</h2>
                   <h3>Кроссовки мужские adidas Duramo SL</h3>
+                  <h2>9 999 ₽</h2>
                   <button>ДОБАВИТЬ В КОРЗИНУ</button>
                 </div>
               </div>
             </CarouselItem>
-            <CarouselItem className="basis-1/3">
-              <div>
+            <CarouselItem className="basis-1/4">
+              <div className={styles.item}>
                 <img
                   src="/product3.png"
                   alt="product3"
                   width="290px"
-                  height="300px"
+                  height="302px"
                 />
                 <div>
-                  <h2>2 999 ₽</h2>
                   <h3>Шорты мужские Demix Urban Running 2in1 GFX</h3>
+                  <h2>2 999 ₽</h2>
                   <button>ДОБАВИТЬ В КОРЗИНУ</button>
                 </div>
               </div>
             </CarouselItem>
-            <CarouselItem className="basis-1/3">
-              <div>
+            <CarouselItem className="basis-1/4">
+              <div className={styles.item}>
                 <img
                   src="/product4.png"
                   alt="product4"
                   width="290px"
-                  height="300px"
+                  height="302px"
                 />
                 <div>
-                  <h2>22 999 ₽</h2>
                   <h3>Кроссовки мужские Nike Revolution 6 Next Natureг</h3>
+                  <h2>22 999 ₽</h2>
                   <button>ДОБАВИТЬ В КОРЗИНУ</button>
                 </div>
               </div>
             </CarouselItem>
-            <CarouselItem className="basis-1/3">
-              <div>
+            <CarouselItem className="basis-1/4">
+              <div className={styles.item}>
                 <img
                   src="/product3.png"
                   alt="product3"
                   width="290px"
-                  height="300px"
+                  height="302px"
                 />
                 <div>
-                  <h2>2 999 ₽</h2>
                   <h3>Шорты мужские Demix Urban Running 2in1 GFX</h3>
+                  <h2>2 999 ₽</h2>
                   <button>ДОБАВИТЬ В КОРЗИНУ</button>
                 </div>
               </div>
             </CarouselItem>
-            <CarouselItem className="basis-1/3">
-              <div>
+            <CarouselItem className="basis-1/4">
+              <div className={styles.item}>
                 <img
                   src="/product4.png"
                   alt="product4"
                   width="290px"
-                  height="300px"
+                  height="302px"
                 />
                 <div>
-                  <h2>22 999 ₽</h2>
                   <h3>Кроссовки мужские Nike Revolution 6 Next Natureг</h3>
+                  <h2>22 999 ₽</h2>
                   <button>ДОБАВИТЬ В КОРЗИНУ</button>
                 </div>
               </div>
