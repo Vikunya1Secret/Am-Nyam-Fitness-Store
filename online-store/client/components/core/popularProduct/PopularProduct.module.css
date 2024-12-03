@@ -9,6 +9,9 @@
     
 }
 
+.carouselContent{
+    max-width: 1200px;
+}
 
 .PopularProduct h1{
     font-family: Geologica;
@@ -49,9 +52,7 @@
     background: #7FA5E5;
 }
 
-.carouselContent{
-    max-width: 1200px;
-}
+
 
 .item{
     width: 290px;
@@ -61,7 +62,7 @@
     border-radius: 20px;
 }
 .item img{
-    border-radius: 20px 20px 0 0;
+    border-radius: 15px 15px 0 0;
     max-height: 302px;
 }
 

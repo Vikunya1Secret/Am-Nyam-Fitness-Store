@@ -1,29 +1,14 @@
 .PopularProduct{
-    max-width: 1340px;
-    max-height: 568px;
+    max-width: 1200px;
+    max-height: 1068px;
     display: block;
     text-align: center;
     justify-content: center;
     margin: auto;
     padding: 73px 0;
-    
 }
 
-.PopularProduct h2{
-    max-width: 1200px;
-    max-height: 1396px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin: auto;
-    font-family: Geologica;
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 24px;
 
-    
-    
-}
 .PopularProduct h1{
     font-family: Geologica;
     font-size: 37.5px;
@@ -31,22 +16,56 @@
     line-height: 24px;
     padding-bottom: 25px;
 }
-
-.PopularProduct h3{
-    font-family: Geologica;
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 24px; 
-}
-.PopularProduct button{
+.PopularProduct h2{
     font-family: Geologica;
     font-size: 16px;
     font-weight: 800;
     line-height: 24px;
+    color: #000000;
+    
+    
+}
+.PopularProduct h3{
+    color: #474545;
+    font-family: Geologica;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
 
 
+}
+.item button{
+    font-family: Geologica;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    width: Fixed (217px)px;
+    height: Fixed (48px)px;
+    padding: 12px 20px 12px 20px;
+    gap: 8px;
+    border-radius: 15px;
+    opacity: 0px;
+    background: #7FA5E5;
 }
 
 .carouselContent{
     max-width: 1200px;
+}
+
+.item{
+    width: 290px;
+    height: 474px;
+    border: 3px solid #F6F6F6;
+    flex-basis: 28%;
+    border-radius: 20px;
+}
+.item img{
+    border-radius: 15px 15px 0 0;
+    max-height: 302px;
+}
+
+
+.item div{
+    max-width: 217px;
+    margin: 36px 36px 16px 36px;
 }

@@ -23,6 +23,6 @@
     }
   },
   
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/shared/bootstrap.js", "components/ui/Bootstrap.js", "components/core/popularProduct/index.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/shared/bootstrap.js", "components/ui/Bootstrap.js", "components/core/popularProduct/index.ts", "app/404.tsx"],
   "exclude": ["node_modules"]
 }

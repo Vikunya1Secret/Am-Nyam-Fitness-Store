@@ -1,14 +1,12 @@
-import { cn } from "@/lib/utils";
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../ui/carousel2";
+} from "../ui/advertisingBanners";
 
 interface Props {
   className?: string;

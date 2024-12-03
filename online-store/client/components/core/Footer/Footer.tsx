@@ -89,7 +89,7 @@ export const Fotter: React.FC<Props> = () => {
                 </li>
                 <li>
                   <button>
-                    <h2 className={styles.lasth2}>Публичная офферта</h2>
+                    <h2 className={styles.lasth2}>Публичная оферта</h2>
                   </button>
                 </li>
               </ul>

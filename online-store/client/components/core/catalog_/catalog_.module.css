@@ -1,0 +1,82 @@
+.catalog{
+    max-width: 1230px;
+    margin-left: auto;
+    margin-right: auto;  
+    margin-top: 148px; 
+    height: 2000px;
+
+    
+}
+
+.product{
+    display: grid;
+    grid-template-columns: 305px auto 40%;
+    grid-template-rows: 490px 32vw 31rem;
+    margin-left: 30px;
+  
+    
+    
+}
+/*flex-wrap: wrap;
+grid-gap: 44px 18px
+max-width: 920px;*/
+
+.filterAndProduct{
+    display: flex;
+}
+
+
+.product h2{
+    font-family: Geologica;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;   
+}
+.product h3{
+    color: #474545;
+    font-family: Geologica;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+
+
+}
+.item button{
+    font-family: Geologica;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    width: Fixed (217px)px;
+    height: Fixed (48px)px;
+    padding: 12px 20px 12px 20px;
+    gap: 8px;
+    border-radius: 15px;
+    opacity: 0px;
+    background: #7FA5E5;
+}
+
+
+
+.item{
+    width: 290px;
+    height: 474px;
+    border: 3px solid #F6F6F6;
+    border-radius: 20px;
+    margin: 0 15px 15px 0;
+}
+
+.item img{
+    border-radius: 15px 15px 0 0;
+    max-height: 302px;
+}
+
+
+.item div{
+    max-width: 217px;
+    margin: 20px 36px 16px 36px;
+    text-align: center;
+ 
+}   
+.item div Button{
+    margin: 10px 0 0 0;
+}  

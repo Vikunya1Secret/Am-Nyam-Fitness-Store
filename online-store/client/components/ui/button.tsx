@@ -11,7 +11,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/0",
+        default: "bg-primary text-primary-foreground hover:bg-[#7C8DA7]",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/0",
         outline:
@@ -63,7 +63,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {!loading ? children : <Loader className="w-5 h-5 animate-spin" />}
+        {!loading ? children : <Loader className="w-5 h-5 animate-spin " />}
       </Comp>
     );
   }

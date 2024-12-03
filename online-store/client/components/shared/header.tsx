@@ -15,10 +15,10 @@ export const Header: React.FC<Props> = ({ className }) => {
     <header className={cn("", className)}>
       <Container className=" max-w-[1200px] flex items-center justify-between py-8 mx-auto my-auto">
         {/* Левая часть */}
-        <form action="http://localhost:3000/">
-          <Button variant="default">
+        <form action="/">
+          <button>
             <Image src="/Logo.jpg" alt="logo" width={271} height={69} />
-          </Button>
+          </button>
         </form>
 
         {/* Середина */}
@@ -29,19 +29,19 @@ export const Header: React.FC<Props> = ({ className }) => {
         {/* Правая часть */}
         <div className="flex items-center ">
           <form action="like" className="flex items-center">
-            <Button variant="default">
+            <button>
               <Heart size="39" />
-            </Button>
+            </button>
           </form>
-          <form action="account" className="flex items-center">
-            <Button variant="default">
+          <form action="account" className="flex items-center ml-[39px]">
+            <button>
               <UserRound size="39" />
-            </Button>
+            </button>
           </form>
-          <form action="basket" className="flex items-center">
-            <Button variant="default">
+          <form action="basket" className="flex items-center ml-[39px]">
+            <button>
               <ShoppingBag size="39" />
-            </Button>
+            </button>
           </form>
         </div>
       </Container>

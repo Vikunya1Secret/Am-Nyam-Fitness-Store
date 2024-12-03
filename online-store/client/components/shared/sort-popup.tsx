@@ -6,7 +6,7 @@ export interface Props {
   className?: "string";
 }
 
-export const SortPopup: React.FC<Props> = ({ className }) => {
+export const SortPopups: React.FC<Props> = ({ className }) => {
   return (
     <div
       className={cn(

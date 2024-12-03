@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./caruselPopularProduct";
+import { Button } from "@/components/ui";
 
 interface Props {
   className?: string;
@@ -30,7 +31,7 @@ export const PopularProduct: React.FC<Props> = () => {
                 <div>
                   <h3>Кроссовки мужские adidas Duramo SL</h3>
                   <h2>9 999 ₽</h2>
-                  <button>ДОБАВИТЬ В КОРЗИНУ</button>
+                  <Button>ДОБАВИТЬ В КОРЗИНУ</Button>
                 </div>
               </div>
             </CarouselItem>
@@ -45,7 +46,7 @@ export const PopularProduct: React.FC<Props> = () => {
                 <div>
                   <h3>Шорты мужские Demix Urban Running 2in1 GFX</h3>
                   <h2>2 999 ₽</h2>
-                  <button>ДОБАВИТЬ В КОРЗИНУ</button>
+                  <Button>ДОБАВИТЬ В КОРЗИНУ</Button>
                 </div>
               </div>
             </CarouselItem>
@@ -60,7 +61,7 @@ export const PopularProduct: React.FC<Props> = () => {
                 <div>
                   <h3>Кроссовки мужские Nike Revolution 6 Next Natureг</h3>
                   <h2>22 999 ₽</h2>
-                  <button>ДОБАВИТЬ В КОРЗИНУ</button>
+                  <Button>ДОБАВИТЬ В КОРЗИНУ</Button>
                 </div>
               </div>
             </CarouselItem>
@@ -75,7 +76,7 @@ export const PopularProduct: React.FC<Props> = () => {
                 <div>
                   <h3>Шорты мужские Demix Urban Running 2in1 GFX</h3>
                   <h2>2 999 ₽</h2>
-                  <button>ДОБАВИТЬ В КОРЗИНУ</button>
+                  <Button>ДОБАВИТЬ В КОРЗИНУ</Button>
                 </div>
               </div>
             </CarouselItem>
@@ -90,7 +91,7 @@ export const PopularProduct: React.FC<Props> = () => {
                 <div>
                   <h3>Кроссовки мужские Nike Revolution 6 Next Natureг</h3>
                   <h2>22 999 ₽</h2>
-                  <button>ДОБАВИТЬ В КОРЗИНУ</button>
+                  <Button>ДОБАВИТЬ В КОРЗИНУ</Button>
                 </div>
               </div>
             </CarouselItem>
@@ -103,19 +104,3 @@ export const PopularProduct: React.FC<Props> = () => {
     </div>
   );
 };
-
-/*<CarouselItem className="basis-1/3">
-              <div>
-                <img
-                  src="/product1.png"
-                  alt="product1"
-                  max-width="290px"
-                  max-height="300px"
-                />
-                <div>
-                  <h2>2 999 ₽</h2>
-                  <h3 className="">Гантель наборная с дисками Torneo, 10 кг</h3>
-                  <button>ДОБАВИТЬ В КОРЗИНУ</button>
-                </div>
-              </div>
-            </CarouselItem>*/
