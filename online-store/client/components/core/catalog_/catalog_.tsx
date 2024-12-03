@@ -2,6 +2,7 @@ import { Filters } from "@/components/shared/filters";
 import { SortPopup } from "../SortPopup/Sort-popup";
 import styles from "./catalog_.module.css";
 import { Button } from "@/components/ui";
+import { BreadcrumbWithCustomSeparator } from "./breadcrumb";
 interface Props {
   className?: string;
 }
@@ -9,7 +10,8 @@ interface Props {
 export const Catalog_: React.FC<Props> = () => {
   return (
     <div className={styles.catalog}>
-      <SortPopup className="mb-[50px]" />
+      <BreadcrumbWithCustomSeparator />
+      <SortPopup className="mb-[50px] mt-[50px]" />
       <div className={styles.filterAndProduct}>
         <Filters />
         <div className={styles.product}>
