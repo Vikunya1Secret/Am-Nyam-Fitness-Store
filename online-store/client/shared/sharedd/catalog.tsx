@@ -1,22 +1,24 @@
-import { Categories } from "@/components/shared/categories";
-import { Container } from "@/components/shared/container";
-import { Menu } from "lucide-react";
-import React from "react";
-import { cn } from "@/lib/utils";
+import { Menu } from 'lucide-react'
+import React from 'react'
+
+import { Categories } from '@/shared/sharedd/categories'
+import { Container } from '@/shared/sharedd/container'
+
+import { cn } from '@/lib/utils'
 
 export default function Catalog() {
-  return (
-    <Container className="w-full bg-[#B7CDF3]">
-      <div className="max-w-[1200px] flex items-center mx-auto my-auto h-[60px] justify-between ">
-        <div className="flex">
-          <Menu />
-          <h1>КАТАЛОГ</h1>
-        </div>
-        <Categories />
-        <div></div>
-      </div>
-    </Container>
-  );
+	return (
+		<Container className='w-full bg-[#B7CDF3]'>
+			<div className='mx-auto my-auto flex h-[60px] max-w-[1200px] items-center justify-between'>
+				<div className='flex'>
+					<Menu />
+					<h1>КАТАЛОГ</h1>
+				</div>
+				<Categories />
+				<div></div>
+			</div>
+		</Container>
+	)
 }
 /*
 import {

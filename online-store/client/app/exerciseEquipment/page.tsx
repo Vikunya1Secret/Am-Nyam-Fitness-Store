@@ -1,24 +1,25 @@
-import { AdvertisingBanners } from "@/components/shared/advertisingBanners";
+import { Menu } from 'lucide-react'
 
-import { Categories } from "@/components/shared/categories";
-import { Container } from "@/components/shared/container";
-import { Header } from "@/components/shared/header";
-import { Menu } from "lucide-react";
+import { AdvertisingBanners } from '@/shared/sharedd/advertisingBanners'
+import { Categories } from '@/shared/sharedd/categories'
+import { Container } from '@/shared/sharedd/container'
+import { Filters } from '@/shared/sharedd/filters'
+import { Header } from '@/shared/sharedd/header'
+import { PaginationDemo } from '@/shared/sharedd/pagination'
 
-import { Filters } from "@/components/shared/filters";
-import { PaginationDemo } from "@/components/shared/pagination";
-import { SortPopup } from "@/components/core/SortPopup/Sort-popup";
-import { Catalog_ } from "@/components/core/catalog_";
-import { Catalog } from "@/components/core/catalog/catalog";
-import { Fotter } from "@/components/core/Footer";
+import { Fotter } from '@/components/core/Footer'
+import { SortPopup } from '@/components/core/SortPopup/Sort-popup'
+import { Catalog } from '@/components/core/catalog/catalog'
+import { Catalog_ } from '@/components/core/catalog_'
+
 export default function ExerciseEquipment() {
-  return (
-    <Container className="w-full ">
-      <Header />
-      <Catalog />
-      <Catalog_ />
-      <PaginationDemo />
-      <Fotter />
-    </Container>
-  );
+	return (
+		<Container className='w-full'>
+			<Header />
+			<Catalog />
+			<Catalog_ />
+			<PaginationDemo />
+			<Fotter />
+		</Container>
+	)
 }
