@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react'
 
-import { Checkbox } from '../components/ui/checkbox'
+import { Checkbox } from '@/shared/components/ui'
 
 export interface FilterChecboxProps {
 	text: string

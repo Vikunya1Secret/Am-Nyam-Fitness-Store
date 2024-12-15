@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { Input } from '@/shared/components/ui/input'
-import { CheckboxFiltersGroup } from '@/shared/sharedd/checkbox-filters-group'
-import { FilterCheckbox } from '@/shared/sharedd/filter-checkbox'
 
+import { Title } from '../../../shared/sharedd/title'
+
+import { CheckboxFiltersGroup } from './checkbox-filters-group'
+import { FilterCheckbox } from './filter-checkbox'
 import styles from './filters.module.css'
-import { Title } from './title'
 
 interface Props {
 	className?: string

@@ -2,8 +2,6 @@ import { Heart, ShoppingBag, ShoppingCart, UserRound } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
-import { Button } from '../components/ui/button'
-
 import { Container } from './container'
 import { SearchInput } from './search-input'
 import { cn } from '@/lib/utils'
@@ -19,7 +17,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 				{/* Левая часть */}
 				<form action='/'>
 					<button>
-						<Image
+						<img
 							src='/Logo.jpg'
 							alt='logo'
 							width={271}
@@ -35,23 +33,17 @@ export const Header: React.FC<Props> = ({ className }) => {
 
 				{/* Правая часть */}
 				<div className='flex items-center'>
-					<form action='like' className='flex items-center'>
+					<form action='like' className='flex items-center px-2'>
 						<button>
 							<Heart size='39' />
 						</button>
 					</form>
-					<form
-						action='account'
-						className='ml-[39px] flex items-center'
-					>
+					<form action='account' className='flex items-center px-4'>
 						<button>
 							<UserRound size='39' />
 						</button>
 					</form>
-					<form
-						action='basket'
-						className='ml-[39px] flex items-center'
-					>
+					<form action='basket' className='flex items-center'>
 						<button>
 							<ShoppingBag size='39' />
 						</button>

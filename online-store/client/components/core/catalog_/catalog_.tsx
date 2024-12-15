@@ -1,12 +1,10 @@
-import { Heart } from 'lucide-react'
-
-import { Button } from '@/shared/components/ui'
-import { Filters } from '@/shared/sharedd/filters'
+import { Button } from '@/shared/components/ui/button'
 
 import { SortPopup } from '../SortPopup/Sort-popup'
 
 import { BreadcrumbWithCustomSeparator } from './breadcrumb'
 import styles from './catalog_.module.css'
+import { Filters } from '@/components/core/filter-checkbox/filters'
 
 interface Props {
 	className?: string
