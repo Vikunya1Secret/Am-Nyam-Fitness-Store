@@ -1,0 +1,17 @@
+
+
+.cats ul{
+    display: flex;
+    
+}
+.cats li{
+
+    justify-content: center;
+    font-family: Geologica;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    padding: 15px ;
+}
+
