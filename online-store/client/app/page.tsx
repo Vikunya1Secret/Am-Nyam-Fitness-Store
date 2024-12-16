@@ -20,12 +20,16 @@ export default function Home() {
 			<Header />
 			<Catalog />
 			<AdvertisingBanners />
-			<Link href='/auth/login' className={buttonVariants()}>
-				Войти в аккаунт
-			</Link>
+			<Link href='/auth/login'>Войти в аккаунт</Link>
 			<PopularProduct />
 			<WinterCollection />
 			<Fotter />
 		</Container>
 	)
 }
+
+/*
+<Link href='/auth/login' className={buttonVariants()}>
+				Войти в аккаунт
+			</Link>
+			*/

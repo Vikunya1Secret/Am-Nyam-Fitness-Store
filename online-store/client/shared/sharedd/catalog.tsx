@@ -4,7 +4,7 @@ import React from 'react'
 import { Categories } from '@/shared/sharedd/categories'
 import { Container } from '@/shared/sharedd/container'
 
-import { cn } from '@/lib/utils'
+import { cn } from '../utils/clsx'
 
 export default function Catalog() {
 	return (

@@ -6,9 +6,9 @@ import {
 	PopoverContent,
 	PopoverTrigger
 } from '@/shared/components/ui/popover'
+import { cn } from '@/shared/utils/clsx'
 
 import styles from './SortPopup.module.css'
-import { cn } from '@/lib/utils'
 
 interface Props {
 	className?: string

@@ -9,8 +9,7 @@ import {
 	ButtonProps,
 	buttonVariants
 } from '@/shared/components/ui/paginationButton'
-
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/utils/clsx'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
 	<nav

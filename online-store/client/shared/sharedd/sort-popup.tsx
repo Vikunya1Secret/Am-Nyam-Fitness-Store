@@ -1,21 +1,22 @@
-import { cn } from "@/lib/utils";
-import { ArrowUpDown } from "lucide-react";
-import React from "react";
+import { ArrowUpDown } from 'lucide-react'
+import React from 'react'
+
+import { cn } from '../utils/clsx'
 
 export interface Props {
-  className?: "string";
+	className?: 'string'
 }
 
 export const SortPopups: React.FC<Props> = ({ className }) => {
-  return (
-    <div
-      className={cn(
-        "inline-flex item-center gap-1 bg-gray-50 px-5 h-[52px] rounded-2xl cursor-pointer",
-        className
-      )}
-    >
-      <ArrowUpDown size={16} />
-      <b className="text-primary ">популярное</b>
-    </div>
-  );
-};
+	return (
+		<div
+			className={cn(
+				'item-center inline-flex h-[52px] cursor-pointer gap-1 rounded-2xl bg-gray-50 px-5',
+				className
+			)}
+		>
+			<ArrowUpDown size={16} />
+			<b className='text-primary'>популярное</b>
+		</div>
+	)
+}

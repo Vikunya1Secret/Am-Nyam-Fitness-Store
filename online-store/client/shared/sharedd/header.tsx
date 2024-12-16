@@ -2,9 +2,10 @@ import { Heart, ShoppingBag, ShoppingCart, UserRound } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
+import { cn } from '../utils/clsx'
+
 import { Container } from './container'
 import { SearchInput } from './search-input'
-import { cn } from '@/lib/utils'
 
 interface Props {
 	className?: string
