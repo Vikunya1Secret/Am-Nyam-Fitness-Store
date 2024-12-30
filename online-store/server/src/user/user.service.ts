@@ -29,7 +29,10 @@ export class UserService {
 				id
 			},
 			include: {
-				accounts: true
+				accounts: true,
+				stores: true,
+				favourites: true,
+				orders: true
 			}
 		})
 
@@ -53,11 +56,37 @@ export class UserService {
 				email
 			},
 			include: {
-				accounts: true
+				accounts: true,
+				stores: true,
+				favourites: true,
+				orders: true
 			}
 		})
 
 		return user
+	}
+
+	async toggleFavourite(productId: string, userId: string) {
+		const user = await this.findById(userId)
+
+		const isExists = user.favourites.some(
+			product => product.id === productId
+		)
+
+		await this.prismaService.user.update({
+			where: {
+				id: user.id
+			},
+			data: {
+				favourites: {
+					[isExists ? 'disconnect' : 'connect']: {
+						id: productId
+					}
+				}
+			}
+		})
+
+		return true
 	}
 
 	/**
@@ -88,7 +117,10 @@ export class UserService {
 				isVerified
 			},
 			include: {
-				accounts: true
+				accounts: true,
+				stores: true,
+				favourites: true,
+				orders: true
 			}
 		})
 

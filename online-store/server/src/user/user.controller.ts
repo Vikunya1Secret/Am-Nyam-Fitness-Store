@@ -15,6 +15,8 @@ import { Authorized } from '@/auth/decorators/authorized.decorator'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { UserService } from './user.service'
 
+import { CurrentUser } from './decorators/user.decorator'
+
 /**
  * Контроллер для управления пользователями.
  */
@@ -64,5 +66,14 @@ export class UserController {
 		@Body() dto: UpdateUserDto
 	) {
 		return this.userService.update(userId, dto)
+	}
+
+	@Authorization()
+	@Patch('profile/favourites/:productId')
+	async toggleFavorite(
+		@CurrentUser('id') userId: string,
+		@Param('productId') productId: string
+	) {
+		return this.userService.toggleFavourite(productId, userId)
 	}
 }

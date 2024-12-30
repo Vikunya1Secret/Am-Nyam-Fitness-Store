@@ -10,6 +10,14 @@ import { IS_DEV_ENV } from './libs/common/utils/is-dev.util'
 import { MailModule } from './libs/mail/mail.module'
 import { PrismaModule } from './prisma/prisma.module'
 import { UserModule } from './user/user.module'
+import { ColorModule } from './color/color.module';
+import { CategoryModule } from './category/category.module';
+import { FileModule } from './file/file.module';
+import { OrderModule } from './order/order.module';
+import { StatisticsModule } from './statistics/statistics.module';
+import { ProductModule } from './product/product.module';
+import { StoreModule } from './store/store.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
 	imports: [
@@ -24,7 +32,15 @@ import { UserModule } from './user/user.module'
 		MailModule,
 		EmailConfirmationModule,
 		PasswordRecoveryModule,
-		TwoFactorAuthModule
+		TwoFactorAuthModule,
+		ColorModule,
+		CategoryModule,
+		FileModule,
+		OrderModule,
+		StatisticsModule,
+		ProductModule,
+		StoreModule,
+		ReviewModule
 	]
 })
 export class AppModule {}

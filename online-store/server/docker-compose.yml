@@ -1,7 +1,6 @@
 version: '3.7' # Указывает версию Docker Compose
 
 services: # Начало секции с сервисами
-
     nest-app:
         build: .
         ports:
@@ -30,7 +29,7 @@ services: # Начало секции с сервисами
             - postgres_data:/var/lib/postgresql/data # Хранение данных PostgreSQL в томе postgres_data
         networks: # Настройка сетей
             - backend # Подключение к сети backend
-    
+
     pgadmin:
         image: dpage/pgadmin4:latest
         container_name: pgadmin
@@ -54,7 +53,7 @@ services: # Начало секции с сервисами
             - redis_data:/data # Хранение данных Redis в томе redis_data
         networks: # Настройка сетей
             - backend # Подключение к сети backend
-
+    
     client:
         build:
             context: ../client
