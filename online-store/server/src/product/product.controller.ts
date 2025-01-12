@@ -14,7 +14,7 @@ import {
 
 import { ProductDto } from './dto/product.dto'
 import { ProductService } from './product.service'
-import { Authorization } from '@/auth/decorators/auth.decorator'
+import { Auth } from '@/auth/decorators/auth.decorator'
 
 @Controller('products')
 export class ProductController {
@@ -25,7 +25,7 @@ export class ProductController {
 		return this.productService.getAll(searchTerm)
 	}
 
-	@Authorization()
+	@Auth()
 	@Get('by-storeId/:storeId')
 	async getByStoreId(@Param('storeId') storeId: string) {
 		return this.productService.getByStoreId(storeId)
@@ -53,7 +53,7 @@ export class ProductController {
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
-	@Authorization()
+	@Auth()
 	@Post(':storeId')
 	async create(@Param('storeId') storeId: string, @Body() dto: ProductDto) {
 		return this.productService.create(storeId, dto)
@@ -61,14 +61,14 @@ export class ProductController {
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
-	@Authorization()
+	@Auth()
 	@Put(':id')
 	async update(@Param('id') id: string, @Body() dto: ProductDto) {
 		return this.productService.update(id, dto)
 	}
 
 	@HttpCode(200)
-	@Authorization()
+	@Auth()
 	@Delete(':id')
 	async delete(@Param('id') id: string) {
 		return this.productService.delete(id)

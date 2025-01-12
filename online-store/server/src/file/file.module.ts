@@ -4,6 +4,7 @@ import { path } from 'app-root-path'
 import { FileController } from './file.controller'
 import { FileService } from './file.service'
 import { UserService } from '@/user/user.service'
+import { PrismaService } from '@/prisma/prisma.service'
 
 @Module({
 	imports: [
@@ -13,6 +14,6 @@ import { UserService } from '@/user/user.service'
 		})
 	],
 	controllers: [FileController],
-	providers: [FileService, UserService]
+	providers: [FileService, UserService, PrismaService]
 })
 export class FileModule {}

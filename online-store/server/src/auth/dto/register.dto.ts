@@ -3,10 +3,7 @@ import {
 	IsNotEmpty,
 	IsString,
 	MinLength,
-	Validate
 } from 'class-validator'
-
-import { IsPasswordsMatchingConstraint } from '@/libs/common/decorators/is-passwords-matching-constraint.decorator'
 
 /**
  * DTO для регистрации пользователя.
@@ -39,18 +36,4 @@ export class RegisterDto {
 		message: 'Пароль должен содержать минимум 6 символов.'
 	})
 	password: string
-
-	/**
-	 * Подтверждение пароля пользователя.
-	 * @example password123
-	 */
-	@IsString({ message: 'Пароль подтверждения должен быть строкой.' })
-	@IsNotEmpty({ message: 'Поле подтверждения пароля не может быть пустым.' })
-	@MinLength(6, {
-		message: 'Пароль подтверждения должен содержать не менее 6 символов.'
-	})
-	@Validate(IsPasswordsMatchingConstraint, {
-		message: 'Пароли не совпадают.'
-	})
-	passwordRepeat: string
 }

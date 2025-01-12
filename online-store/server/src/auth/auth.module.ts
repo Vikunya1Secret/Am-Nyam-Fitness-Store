@@ -1,34 +1,36 @@
-import { forwardRef, Module } from '@nestjs/common'
+import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
-import { GoogleRecaptchaModule } from '@nestlab/google-recaptcha'
 
-import { getProvidersConfig } from '@/config/providers.config'
-import { getRecaptchaConfig } from '@/config/recaptcha.config'
-import { MailService } from '@/libs/mail/mail.service'
-import { UserService } from '@/user/user.service'
+import { JwtModule } from '@nestjs/jwt'
+import { getJwtConfig } from 'src/config/jwt.config'
 
+import { PrismaService } from '@/prisma/prisma.service'
+import { UserModule } from 'src/user/user.module'
+import { UserService } from 'src/user/user.service'
 import { AuthController } from './auth.controller'
 import { AuthService } from './auth.service'
-import { EmailConfirmationModule } from './email-confirmation/email-confirmation.module'
-import { ProviderModule } from './provider/provider.module'
-import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service'
+import { GoogleStrategy } from './strategies/google.strategy'
+import { JwtStrategy } from './strategies/jwt.strategy'
+import { YandexStrategy } from './strategies/yandex.strategy'
 
 @Module({
 	imports: [
-		ProviderModule.registerAsync({
+		UserModule,
+		ConfigModule,
+		JwtModule.registerAsync({
 			imports: [ConfigModule],
-			useFactory: getProvidersConfig,
-			inject: [ConfigService]
-		}),
-		GoogleRecaptchaModule.forRootAsync({
-			imports: [ConfigModule],
-			useFactory: getRecaptchaConfig,
-			inject: [ConfigService]
-		}),
-		forwardRef(() => EmailConfirmationModule)
+			inject: [ConfigService],
+			useFactory: getJwtConfig
+		})
 	],
 	controllers: [AuthController],
-	providers: [AuthService, UserService, MailService, TwoFactorAuthService],
-	exports: [AuthService]
+	providers: [
+		AuthService,
+		PrismaService,
+		UserService,
+		GoogleStrategy,
+		YandexStrategy,
+		JwtStrategy
+	]
 })
 export class AuthModule {}

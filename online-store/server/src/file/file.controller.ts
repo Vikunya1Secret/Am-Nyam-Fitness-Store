@@ -9,7 +9,7 @@ import {
 import { FilesInterceptor } from '@nestjs/platform-express'
 
 import { FileService } from './file.service'
-import { Authorization } from '@/auth/decorators/auth.decorator'
+import { Auth } from '@/auth/decorators/auth.decorator'
 
 @Controller('files')
 export class FileController {
@@ -17,7 +17,7 @@ export class FileController {
 
 	@HttpCode(200)
 	@UseInterceptors(FilesInterceptor('files'))
-	@Authorization()
+	@Auth()
 	@Post()
 	async saveFiles(
 		@UploadedFiles() files: Express.Multer.File[],

@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.0.1
- * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
+ * Prisma Client JS version: 6.2.1
+ * Query Engine version: 4123509d24aa4dede1e864b46351bf2790323b69
  */
 Prisma.prismaVersion = {
-  client: "6.0.1",
-  engine: "11f085a2012c0f4778414c8db2651556ee0ef959"
+  client: "6.2.1",
+  engine: "4123509d24aa4dede1e864b46351bf2790323b69"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -124,32 +124,8 @@ exports.Prisma.UserScalarFieldEnum = {
   displayName: 'displayName',
   picture: 'picture',
   role: 'role',
-  isVerified: 'isVerified',
-  isTwoFactorEnabled: 'isTwoFactorEnabled',
-  method: 'method',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
-};
-
-exports.Prisma.AccountScalarFieldEnum = {
-  id: 'id',
-  type: 'type',
-  provider: 'provider',
-  refreshToken: 'refreshToken',
-  accessToken: 'accessToken',
-  expiresAt: 'expiresAt',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId'
-};
-
-exports.Prisma.TokenScalarFieldEnum = {
-  id: 'id',
-  email: 'email',
-  token: 'token',
-  type: 'type',
-  expiresIn: 'expiresIn',
-  createdAt: 'createdAt'
 };
 
 exports.Prisma.StoreScalarFieldEnum = {
@@ -244,18 +220,6 @@ exports.UserRole = exports.$Enums.UserRole = {
   ADMIN: 'ADMIN'
 };
 
-exports.AuthMethod = exports.$Enums.AuthMethod = {
-  CREDENTIALS: 'CREDENTIALS',
-  GOOGLE: 'GOOGLE',
-  YANDEX: 'YANDEX'
-};
-
-exports.TokenType = exports.$Enums.TokenType = {
-  VERIFICATION: 'VERIFICATION',
-  TWO_FACTOR: 'TWO_FACTOR',
-  PASSWORD_RESET: 'PASSWORD_RESET'
-};
-
 exports.EnumOrderStatus = exports.$Enums.EnumOrderStatus = {
   PENDING: 'PENDING',
   PAYED: 'PAYED'
@@ -263,8 +227,6 @@ exports.EnumOrderStatus = exports.$Enums.EnumOrderStatus = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Account: 'Account',
-  Token: 'Token',
   Store: 'Store',
   Product: 'Product',
   Category: 'Category',

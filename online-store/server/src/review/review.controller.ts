@@ -12,13 +12,13 @@ import {
 import { CurrentUser } from 'src/user/decorators/user.decorator'
 import { ReviewDto } from './dto/review.dto'
 import { ReviewService } from './review.service'
-import { Authorization } from '@/auth/decorators/auth.decorator'
+import { Auth } from '@/auth/decorators/auth.decorator'
 
 @Controller('reviews')
 export class ReviewController {
 	constructor(private readonly reviewService: ReviewService) {}
 
-	@Authorization()
+	@Auth()
 	@Get('by-storeId/:storeId')
 	async getByStoreId(@Param('storeId') storeId: string) {
 		return this.reviewService.getByStoreId(storeId)
@@ -26,7 +26,7 @@ export class ReviewController {
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
-	@Authorization()
+	@Auth()
 	@Post(':productId/:storeId')
 	async create(
 		@CurrentUser('id') userId: string,
@@ -38,7 +38,7 @@ export class ReviewController {
 	}
 
 	@HttpCode(200)
-	@Authorization()
+	@Auth()
 	@Delete(':id')
 	async delete(@Param('id') id: string, @CurrentUser('id') userId: string) {
 		return this.reviewService.delete(id, userId)
