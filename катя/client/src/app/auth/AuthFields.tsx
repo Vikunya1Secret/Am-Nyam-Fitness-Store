@@ -45,7 +45,6 @@ export function AuthFields({
 					)}
 				/>
 			)}
-
 			<FormField
 				control={form.control}
 				name='email'
