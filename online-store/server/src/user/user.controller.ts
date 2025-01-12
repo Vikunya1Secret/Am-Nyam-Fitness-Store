@@ -9,11 +9,12 @@ import {
 } from '@nestjs/common'
 import { UserRole } from '@prisma/__generated__'
 
-import { Authorization } from '@/auth/decorators/auth.decorator'
+import { Auth } from '@/auth/decorators/auth.decorator'
 import { Authorized } from '@/auth/decorators/authorized.decorator'
-
 import { UpdateUserDto } from './dto/update-user.dto'
 import { UserService } from './user.service'
+
+import { CurrentUser } from './decorators/user.decorator'
 
 /**
  * Контроллер для управления пользователями.
@@ -31,11 +32,11 @@ export class UserController {
 	 * @param userId - ID авторизованного пользователя.
 	 * @returns Профиль пользователя.
 	 */
-	@Authorization()
+	@Auth()
 	@HttpCode(HttpStatus.OK)
 	@Get('profile')
-	public async findProfile(@Authorized('id') userId: string) {
-		return this.userService.findById(userId)
+	async getProfile(@CurrentUser('id') id: string) {
+		return this.userService.getById(id)
 	}
 
 	/**
@@ -43,11 +44,11 @@ export class UserController {
 	 * @param id - ID пользователя.
 	 * @returns Найденный пользователь.
 	 */
-	@Authorization(UserRole.ADMIN)
+	@Auth(UserRole.ADMIN)
 	@HttpCode(HttpStatus.OK)
 	@Get('by-id/:id')
 	public async findById(@Param('id') id: string) {
-		return this.userService.findById(id)
+		return this.userService.getById(id)
 	}
 
 	/**
@@ -56,7 +57,7 @@ export class UserController {
 	 * @param dto - Данные для обновления профиля.
 	 * @returns Обновленный профиль пользователя.
 	 */
-	@Authorization()
+	@Auth()
 	@HttpCode(HttpStatus.OK)
 	@Patch('profile')
 	public async updateProfile(
@@ -64,5 +65,14 @@ export class UserController {
 		@Body() dto: UpdateUserDto
 	) {
 		return this.userService.update(userId, dto)
+	}
+
+	@Auth()
+	@Patch('profile/favourites/:productId')
+	async toggleFavourite(
+		@CurrentUser('id') userId: string,
+		@Param('productId') productId: string
+	) {
+		return this.userService.toggleFavourite(productId, userId)
 	}
 }

@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
-import { AuthMethod } from '@prisma/__generated__'
 import { hash } from 'argon2'
 
 import { PrismaService } from '@/prisma/prisma.service'
@@ -23,13 +22,19 @@ export class UserService {
 	 * @returns {Promise<User>} Найденный пользователь.
 	 * @throws {NotFoundException} Если пользователь не найден.
 	 */
-	public async findById(id: string) {
+	public async getById(id: string) {
 		const user = await this.prismaService.user.findUnique({
 			where: {
 				id
 			},
 			include: {
-				accounts: true
+				stores: true,
+				favourites: {
+					include: {
+						category: true
+					}
+				},
+				orders: true
 			}
 		})
 
@@ -47,52 +52,56 @@ export class UserService {
 	 * @param {string} email - Email пользователя.
 	 * @returns {Promise<User | null>} Найденный пользователь или null, если не найден.
 	 */
-	public async findByEmail(email: string) {
+	public async getByEmail(email: string) {
 		const user = await this.prismaService.user.findUnique({
 			where: {
 				email
 			},
 			include: {
-				accounts: true
+				stores: true,
+				favourites: true,
+				orders: true
 			}
 		})
 
 		return user
 	}
 
-	/**
-	 * Создает нового пользователя.
-	 * @param email - Email пользователя.
-	 * @param password - Пароль пользователя.
-	 * @param displayName - Отображаемое имя пользователя.
-	 * @param picture - URL аватара пользователя.
-	 * @param method - Метод аутентификации пользователя.
-	 * @param isVerified - Флаг, указывающий, подтвержден ли email пользователя.
-	 * @returns Созданный пользователь.
-	 */
-	public async create(
+	async toggleFavourite(productId: string, userId: string) {
+		const user = await this.getById(userId)
+
+		const isExists = user.favourites.some(
+			product => product.id === productId
+		)
+
+		await this.prismaService.user.update({
+			where: {
+				id: user.id
+			},
+			data: {
+				favourites: {
+					[isExists ? 'disconnect' : 'connect']: {
+						id: productId
+					}
+				}
+			}
+		})
+
+		return true
+	}
+
+	async create(
 		email: string,
 		password: string,
 		displayName: string,
-		picture: string,
-		method: AuthMethod,
-		isVerified: boolean
 	) {
-		const user = await this.prismaService.user.create({
+		return this.prismaService.user.create({
 			data: {
 				email,
 				password: password ? await hash(password) : '',
 				displayName,
-				picture,
-				method,
-				isVerified
-			},
-			include: {
-				accounts: true
 			}
 		})
-
-		return user
 	}
 
 	/**
@@ -102,7 +111,7 @@ export class UserService {
 	 * @returns Обновленный пользователь.
 	 */
 	public async update(userId: string, dto: UpdateUserDto) {
-		const user = await this.findById(userId)
+		const user = await this.getById(userId)
 
 		const updatedUser = await this.prismaService.user.update({
 			where: {
@@ -111,7 +120,6 @@ export class UserService {
 			data: {
 				email: dto.email,
 				displayName: dto.name,
-				isTwoFactorEnabled: dto.isTwoFactorEnabled
 			}
 		})
 

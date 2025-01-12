@@ -1,126 +1,128 @@
 import {
-	BadRequestException,
 	Body,
 	Controller,
 	Get,
 	HttpCode,
-	HttpStatus,
-	Param,
 	Post,
-	Query,
 	Req,
 	Res,
-	UseGuards
+	UseGuards,
+	UnauthorizedException,
+	UsePipes,
+	ValidationPipe
 } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
-import { Recaptcha } from '@nestlab/google-recaptcha'
 import { Request, Response } from 'express'
 
+import { AuthGuard } from '@nestjs/passport'
 import { AuthService } from './auth.service'
 import { LoginDto } from './dto/login.dto'
 import { RegisterDto } from './dto/register.dto'
-import { AuthProviderGuard } from './guards/provider.guard'
-import { ProviderService } from './provider/provider.service'
 
 /**
  * Контроллер для управления авторизацией пользователей.
  */
 @Controller('auth')
 export class AuthController {
-	/**
-	 * Конструктор контроллера аутентификации.
-	 * @param authService - Сервис для аутентификации.
-	 * @param configService - Сервис для работы с конфигурацией приложения.
-	 * @param providerService - Сервис для работы с провайдерами аутентификации.
-	 */
 	public constructor(
 		private readonly authService: AuthService,
-		private readonly configService: ConfigService,
-		private readonly providerService: ProviderService
 	) {}
 
-	/**
-	 * Регистрация нового пользователя.
-	 * @param dto - Объект с данными для регистрации пользователя.
-	 * @returns Ответ от сервиса аутентификации.
-	 */
-	@Recaptcha()
+	@UsePipes(new ValidationPipe())
+	@HttpCode(200)
 	@Post('register')
-	@HttpCode(HttpStatus.OK)
-	public async register(@Body() dto: RegisterDto) {
-		return this.authService.register(dto)
-	}
-
-	/**
-	 * Вход пользователя в систему.
-	 * @param req - Объект запроса Express.
-	 * @param dto - Объект с данными для входа пользователя.
-	 * @returns Ответ от сервиса аутентификации.
-	 */
-	@Recaptcha()
-	@Post('login')
-	@HttpCode(HttpStatus.OK)
-	public async login(@Req() req: Request, @Body() dto: LoginDto) {
-		return this.authService.login(req, dto)
-	}
-
-	/**
-	 * Обработка колбэка от провайдера аутентификации.
-	 * @param req - Объект запроса Express.
-	 * @param res - Объект ответа Express.
-	 * @param code - Код авторизации, полученный от провайдера.
-	 * @param provider - Название провайдера аутентификации.
-	 * @returns Перенаправление на страницу настроек.
-	 * @throws BadRequestException - Если код авторизации не был предоставлен.
-	 */
-	@UseGuards(AuthProviderGuard)
-	@Get('/oauth/callback/:provider')
-	public async callback(
-		@Req() req: Request,
-		@Res({ passthrough: true }) res: Response,
-		@Query('code') code: string,
-		@Param('provider') provider: string
+	async register(
+		@Body() dto: RegisterDto,
+		@Res({ passthrough: true }) res: Response
 	) {
-		if (!code) {
-			throw new BadRequestException(
-				'Не был предоставлен код авторизации.'
-			)
-		}
+		const { refreshToken, ...response } =
+			await this.authService.register(dto)
 
-		await this.authService.extractProfileFromCode(req, provider, code)
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
-		return res.redirect(
-			`${this.configService.getOrThrow<string>('ALLOWED_ORIGIN')}/dashboard/settings`
-		)
+		return response
 	}
 
-	/**
-	 * Подключение пользователя к провайдеру аутентификации.
-	 * @param provider - Название провайдера аутентификации.
-	 * @returns URL для аутентификации через провайдера.
-	 */
-	@UseGuards(AuthProviderGuard)
-	@Get('/oauth/connect/:provider')
-	public async connect(@Param('provider') provider: string) {
-		const providerInstance = this.providerService.findByService(provider)
+	@UsePipes(new ValidationPipe())
+	@HttpCode(200)
+	@Post('login')
+	async login(
+		@Body() dto: LoginDto,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } = await this.authService.login(dto)
 
-		return {
-			url: providerInstance.getAuthUrl()
-		}
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return response
 	}
 
-	/**
-	 * Завершение сессии пользователя.
-	 * @param req - Объект запроса Express.
-	 * @param res - Объект ответа Express.
-	 * @returns Ответ от сервиса аутентификации.
-	 */
-	@Post('logout')
-	@HttpCode(HttpStatus.OK)
-	public async logout(
+	@UsePipes(new ValidationPipe())
+	@HttpCode(200)
+	@Post('login/access-token')
+	async getNewTokens(
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
 	) {
-		return this.authService.logout(req, res)
+		const refreshTokenFromCookies =
+			req.cookies[this.authService.REFRESH_TOKEN_NAME]
+
+		if (!refreshTokenFromCookies) {
+			this.authService.removeRefreshTokenFromResponse(res)
+			throw new UnauthorizedException('Refresh токен не прошел')
+		}
+
+		const { refreshToken, ...response } =
+			await this.authService.getNewTokens(refreshTokenFromCookies)
+
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return response
+	}
+
+	@HttpCode(200)
+	@Post('logout')
+	async logout(@Res({ passthrough: true }) res: Response) {
+		this.authService.removeRefreshTokenFromResponse(res)
+		return true
+	}
+
+	@Get('google')
+	@UseGuards(AuthGuard('google'))
+	async googleAuth(@Req() req) {}
+
+	@Get('google/callback')
+	@UseGuards(AuthGuard('google'))
+	async googleAuthCallback(
+		@Req() req,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } =
+			await this.authService.validateOAuthLogin(req)
+
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return res.redirect(
+			`${process.env['ALLOWED_ORIGIN']}/dashboard?accessToken=${response.accessToken}`
+		)
+	}
+
+	@Get('yandex')
+	@UseGuards(AuthGuard('yandex'))
+	async yandexAuth(@Req() req) {}
+
+	@Get('yandex/callback')
+	@UseGuards(AuthGuard('yandex'))
+	async yandexAuthCallback(
+		@Req() req,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } =
+			await this.authService.validateOAuthLogin(req)
+
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return res.redirect(
+			`${process.env['ALLOWED_ORIGIN']}/dashboard?accessToken=${response.accessToken}`
+		)
 	}
 }
