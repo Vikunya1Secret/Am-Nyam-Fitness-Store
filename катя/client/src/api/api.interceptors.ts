@@ -55,6 +55,7 @@ axiosWithAuth.interceptors.response.use(
 
 export { axiosClassic, axiosWithAuth }
 
+
 /*import axios, { CreateAxiosDefaults } from 'axios'
 
 import { SERVER_URL } from '@/config/api.config'

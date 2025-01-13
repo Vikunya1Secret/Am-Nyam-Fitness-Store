@@ -11,10 +11,10 @@ export function Logo() {
 	return (
 		<Link href={PUBLIC_URL.home()} className={styles.logo}>
 			<Image
-				src='/images/logo.svg'
+				src='/images/logofitzone.svg'
 				alt={SITE_NAME}
-				width={35}
-				height={35}
+				width={29}
+				height={40}
 			/>
 			<div>{SITE_NAME}</div>
 		</Link>

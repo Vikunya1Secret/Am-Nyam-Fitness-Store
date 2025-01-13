@@ -47,14 +47,19 @@ class ProductService {
 	}
 
 	async getMostPopular() {
-		const { data } = await axiosClassic<IProduct[]>({
-			url: API_URL.products(`/most-popular`),
-			method: 'GET'
-		})
-
-		return data
+		try {
+			const { data } = await axiosClassic<IProduct[]>({
+				url: API_URL.products('/most-popular'),
+				method: 'GET',
+			});
+			return data;
+		} catch (error) {
+			console.error('Ошибка при получении популярных продуктов:', error);
+			throw new Error('Не удалось получить популярные продукты');
+		}
 	}
-	/* получение похожих товаров*/
+	
+
 	async getSimilar(id: string) {
 		const { data } = await axiosClassic<IProduct[]>({
 			url: API_URL.products(`/similar/${id}`),

@@ -30,7 +30,6 @@ export function Header() {
 							<Link href={DASHBOARD_URL.home()}>
 								<Image
 									src={user.picture}
-									/*{user.name}*/
 									alt=''
 									width={42}
 									height={42}

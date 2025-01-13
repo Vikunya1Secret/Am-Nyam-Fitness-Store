@@ -1,8 +1,8 @@
-/*import { useMutation } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { ChangeEvent, useMemo, useRef } from 'react'
 import toast from 'react-hot-toast'
 
-import { fileService } from '@/services/auth/file.service'
+import { fileService } from '@/services/file.service'
 
 export function useUpload(onChange: (value: string[]) => void) {
 	const fileInputRef = useRef<HTMLInputElement>(null)
@@ -45,4 +45,3 @@ export function useUpload(onChange: (value: string[]) => void) {
 		[handleButtonClick, isUploading, fileInputRef, handleFileChange]
 	)
 }
-*/

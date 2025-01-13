@@ -1,4 +1,4 @@
-/*import { ImagePlus } from 'lucide-react'
+import { ImagePlus } from 'lucide-react'
 import Image from 'next/image'
 
 import { cn } from '@/utils/clsx'
@@ -50,4 +50,3 @@ export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 		</div>
 	)
 }
-*/
