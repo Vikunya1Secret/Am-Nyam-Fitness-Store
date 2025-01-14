@@ -1,1 +1,0 @@
-export { PopularProduct } from "./popularProduct";
